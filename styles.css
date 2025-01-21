@@ -1,47 +1,122 @@
-/* ---- Magic begins ----*/
-/* Use flex and set auto margin */
-body {
-    min-height: 100%;
-    text-align: center;
-    /* padding-top: 5em; */
+
+/* @import url('https://fonts.googleapis.com/css2?family=Cutive+Mono&display=swap'); */
+
+:root {
+    --bg-color: #f9f9f7;
+    --typewriterSpeed: 3s;
+    --typewriterChars: 14;
 }
 
-#maindiv {
-    padding-top: 4em;
-    width: 600px;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid red; */
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: var(--bg-color);
+    font-family: "Courier New", monospace;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.flex-container {
+    height: 100%;
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    margin: 0px auto;
-    text-align: left;
+    align-items: start;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    align-self: center;
+    max-width: 600px;
 }
 
-footer {
-    margin-top: auto;
-    text-align: center;
+.typewriter {
+    position: relative;
+    text-align: start;
 }
 
-.long {
-    /* Remove this, to see that the footer flows normal for long pages */
-    display: none;
+.typewriter::before,
+.typewriter::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
-/* ---- Magic ends ----*/
-/* Some base styling for the demo */
-/* body {
-    font-family: sans-serif;
-    padding: 0;
-    margin: 0;
-    background-color: #21a1a1;
-    color: #e2fdfd;
-} */
+.typewriter::before {
+    background: var(--bg-color);
+    animation: typewriterAnimation var(--typewriterSpeed) steps(var(--typewriterChars)) 1s forwards;
+}
 
-/* section {
-    padding: 1rem;
-} */
+.typewriter::after {
+    width: 0.125em;
+    background: black;
+    animation: 
+        typewriterAnimation var(--typewriterSpeed) steps(var(--typewriterChars)) 1s forwards,
+        blink 2s steps(var(--typewriterChars)) infinite;
 
-/* footer {
-    background: #132020;
-    color: #fff;
-    padding: 1rem;
-} */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    max-height: 600px;
+    flex-grow: 1;
+}
+
+.footer {
+    border-top: 1px solid black;
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    padding-top: 5px;
+    padding-bottom: 25px;
+    padding-right: 5px;
+}
+
+.icon {
+    height: 1.4em;
+    width: auto;
+    vertical-align: text-bottom;
+    overflow: visible;
+}
+
+.resource-list {
+    padding-left: 25px;
+    padding-top: 5px;
+    column-gap: 25px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.resource {
+    text-wrap-mode: nowrap
+}
+
+a {
+    color: inherit;
+}
+
+@keyframes typewriterAnimation {
+    to {
+        left: 100%;
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
